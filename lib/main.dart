@@ -9,7 +9,7 @@ void main() {
         backgroundColor: Colors.red,
         appBar: AppBar(
           title: Center(
-            child: Text('Dicee'),
+            child: Text('Tap on Dice or Button'),
           ),
           backgroundColor: Colors.red,
         ),
@@ -32,35 +32,66 @@ class _DicePageState extends State<DicePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Expanded(
-            child: FlatButton(
-              color: Colors.transparent,
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: Image.asset('images/dice$leftDiceNumber.png'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: FlatButton(
+                  color: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Image.asset('images/dice$leftDiceNumber.png'),
+                  onPressed: () {
+                    setState(() {
+                      setNewDice();
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                child: FlatButton(
+                  color: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Image.asset('images/dice$rightDiceNumber.png'),
+                  onPressed: () {
+                    setState(() {
+                      setNewDice();
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 100),
+            child: RaisedButton(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.0),
+                side: BorderSide(color: Colors.red),
+              ),
+              color: Colors.white,
+              child: Text(
+                'THROW',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 3,
+                  fontSize: 50,
+                ),
+              ),
               onPressed: () {
                 setState(() {
                   setNewDice();
                 });
               },
             ),
-          ),
-          Expanded(
-            child: FlatButton(
-              color: Colors.transparent,
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: Image.asset('images/dice$rightDiceNumber.png'),
-              onPressed: () {
-                setState(() {
-                  setNewDice();
-                });
-              },
-            ),
-          ),
+          )
         ],
       ),
     );
