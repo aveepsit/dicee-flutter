@@ -25,7 +25,8 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  Random _random = Random();
+  Random _left_random = Random();
+  Random _right_random = Random();
   int leftDiceNumber = 1;
   int rightDiceNumber = 1;
 
@@ -98,8 +99,8 @@ class _DicePageState extends State<DicePage> {
   }
 
   void setNewDice() {
-    rightDiceNumber = _random.nextInt(6) + 1;
-    leftDiceNumber = _random.nextInt(6) + 1;
+    rightDiceNumber = _left_random.nextInt(6) + 1;
+    leftDiceNumber = _right_random.nextInt(6) + 1;
     print('Dice 1 is now $leftDiceNumber');
     print('Dice 2 is now $rightDiceNumber');
   }
